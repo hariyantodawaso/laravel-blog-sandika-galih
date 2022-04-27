@@ -9,8 +9,9 @@
                 <a href="/posts/{{ $post->slug }}" class="text-decoration-none">{{ $post->title }}</a>
             </h2>
 
-            <p>By. <a class="text-decoration-none" href="#">{{ $post->user->name }}</a> in <a
-                    href="/categories/{{ $post->category->slug }}"
+            <p>By. <a class="text-decoration-none"
+                    href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> in
+                <a href="/categories/{{ $post->category->slug }}"
                     class="text-decoration-none">{{ $post->category->name }}</a>
             </p>
 
