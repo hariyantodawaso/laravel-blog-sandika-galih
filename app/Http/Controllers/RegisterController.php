@@ -32,6 +32,6 @@ class RegisterController extends Controller
         $validateData['password'] = bcrypt($validateData['password']);
         $cekRegister = User::create($validateData);
         $sessionflash = $cekRegister ? 'Register Succesfully' : 'Register Filed';
-        return redirect('/login')->with('message', $sessionflash);
+        return redirect('/login')->with('success', $sessionflash);
     }
 }
