@@ -3,28 +3,22 @@
 @section('container')
     <h1 class="mb-3">Post Categories</h1>
 
-    @foreach ($categories as $category)
-        <ul>
-            <li>
-                <h2>
-                    <a href="/categories/{{ $category->slug }}" class="text-decoration-none">{{ $category->name }}</a>
-                </h2>
-            </li>
-        </ul>
-    @endforeach
+    <div class="container">
+        <div class="row">
+            @foreach ($categories as $category)
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white">
+                        <img src="https://source.unsplash.com/500x500?{{ $category->name }}" class="card-img"
+                            alt="{{ $category->name }}">
+                        <div class="card-img-overlay d-flex align-items-center p-0">
+                            <h5 class="card-title text-center flex-fill p-4 fs-3" style="background: rgba(0, 0, 0, 0.7)">
+                                <a class="text-decoration-none text-white"
+                                    href="/posts?category={{ $category->slug }}">{{ $category->name }}</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
 @endsection
-
-
-{{-- Category::create([
-    'name' => 'Personal',
-    'slug' => 'personal',
-])
-
-
-Post::create([
-    'title' => 'Judul Ketiga',
-    'category_id' => 3,
-    'slug' => 'judul-ketiga',
-    'excerpt' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    'body' => 'Nostrum optio nisi, quasi perferendis id laborum fugiat neque tempora voluptate repellendus! Et vitae at laboriosam impedit doloremque animi reiciendis minima, rerum provident esse, suscipit, ratione quae quasi odit adipisci ad accusantium. Magnam harum assumenda dicta distinctio maiores doloribus sit mollitia ipsum? Harum quisquam deleniti sequi deserunt quam totam minima odio necessitatibus delectus nesciunt quod illo, mollitia impedit fugit alias asperiores sapiente! Quam laboriosam voluptatibus corrupti ex minus iste nobis vel incidunt?',
-]) --}}
