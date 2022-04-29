@@ -4,14 +4,12 @@
      <div class="container">
          <div class="row justify-content-center">
              <div class="col-md-10 mb-5">
-
                  <h2 class="mb-3">{{ $post->title }}</h2>
-
                  <p>
                      <small>
                          By. <a class="text-decoration-none"
-                             href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> in <a
-                             href="/categories/{{ $post->category->slug }}"
+                             href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a> in <a
+                             href="/posts?category={{ $post->category->slug }}"
                              class="text-decoration-none">{{ $post->category->name }}</a>
                          {{ $post->created_at->diffForHumans() }}
                      </small>

@@ -13,7 +13,7 @@
                         <div class="card-img-overlay d-flex align-items-center p-0">
                             <h5 class="card-title text-center flex-fill p-4 fs-3" style="background: rgba(0, 0, 0, 0.7)">
                                 <a class="text-decoration-none text-white"
-                                    href="/categories/{{ $category->slug }}">{{ $category->name }}</a>
+                                    href="/posts?category={{ $category->slug }}">{{ $category->name }}</a>
                             </h5>
                         </div>
                     </div>
