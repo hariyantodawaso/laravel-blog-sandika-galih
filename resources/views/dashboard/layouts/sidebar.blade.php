@@ -14,6 +14,29 @@
                     My Posts
                 </a>
             </li>
+        </ul>
+
+        @can('admin')
+            <h6 class="sidebar-heading d-flex justify-content-between align-content-center px-3 mt-4 mb-1  text-muted">
+                Administrator
+            </h6>
+
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : '' }}"
+                        href="/dashboard/categories">
+                        <span data-feather="grid"></span>
+                        Categories
+                    </a>
+                </li>
+            </ul>
+        @endcan
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-content-center px-3 mt-4 mb-1  text-muted">
+            Blog
+        </h6>
+
+        <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="/posts">
                     <span data-feather="arrow-left"></span>
@@ -21,6 +44,5 @@
                 </a>
             </li>
         </ul>
-
     </div>
 </nav>
