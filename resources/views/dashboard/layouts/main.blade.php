@@ -14,6 +14,10 @@
     {{-- My Font --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
 
+    {{-- Trix Editor --}}
+    <link rel="stylesheet" type="text/css" href="/css/trix.css">
+    <script type="text/javascript" src="/js/trix.js"></script>
+
     <style>
         body {
             font-family: 'Poppins', sans-serif !important;
@@ -33,24 +37,28 @@
             }
         }
 
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+
+        trix-editor {
+            min-height: 15em;
+            overflow-y: auto;
+        }
+
     </style>
 
     <!-- Custom styles for this template -->
     <link href="/css/dashboard.css" rel="stylesheet" />
+
 </head>
 
 <body>
-
     @include('dashboard.layouts.header')
-
     <div class="container-fluid">
         <div class="row">
-
             @include('dashboard.layouts.sidebar')
-
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-
-
                 @yield('container')
             </main>
         </div>
@@ -65,6 +73,25 @@
     </script>
 
     <script src="/js/dashboard.js"></script>
+
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+            const oFReader = new FileReader();
+
+            oFReader.readAsDataURL(image.files[0]);
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+
+        document.addEventListener('trix-file-accept', (e) => e.preventDefault());
+
+        // 
+    </script>
 </body>
 
 </html>

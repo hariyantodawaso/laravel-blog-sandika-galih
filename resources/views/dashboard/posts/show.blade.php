@@ -13,13 +13,24 @@
                 <a href="/dashboard/posts" class="btn btn-success btn-sm mb-4"> <span data-feather="arrow-left"></span> Back
                     to all my post</a>
 
-                <a href="#" class="btn btn-warning btn-sm mb-4"> <span data-feather="edit"></span> Edit</a>
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning btn-sm mb-4"> <span
+                        data-feather="edit"></span> Edit</a>
 
-                <a href="#" class="btn btn-danger btn-sm mb-4"> <span data-feather="x-circle"></span>
-                    Delete</a>
+                <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                    @method('delete')
+                    @csrf
+                    <button class="btn btn-danger btn-sm mb-4 border-0" onclick="return confirm('Are you sure')"><span
+                            data-feather="x-circle"></span> Delete</button>
+                </form>
 
-                <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}"
-                    alt="{{ $post->category->name }}" class="img-fluid">
+                @if ($post->image)
+                    <div style="max-height: 400px; overflow:hidden">
+                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid">
+                    </div>
+                @else
+                    <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}"
+                        alt="{{ $post->category->name }}" class="img-fluid">
+                @endif
 
                 <article class="my-3 fs-6">
                     {!! $post->body !!}
